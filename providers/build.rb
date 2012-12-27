@@ -34,8 +34,8 @@ action :download do
     original_run_context, @run_context = @run_context, sub_run_context
     
     # Do the actual work for this action:
-    initialize_connection(@new_resource.connection)
-    download_all(@new_resource.destination)
+    initialize_connection(cached_new_resource.connection)
+    download_all(cached_new_resource.destination)
   rescue => e
     # For some reason errors were not bubbling up unless caught and raised
     Chef::Log.fatal(e)
